@@ -27,13 +27,17 @@
 # Additional notes:
 # There are performance tests consisted of very big numbers and arrays of size at least 30000. Please write
 # an efficient algorithm to prevent timeout.
+# Добавлен модуль для расчета загрузки выполнения кажды из варинатов
+
+
 from random import randint, randrange
 from math import gcd
 from functools import reduce
+import cProfile
 
 
 
-def solution(a):
+def solution1(a):
     # a_set_list = sorted(list(set(a)), reverse=True)
     # while len(set(a_set_list)) != 1:
     #     a_set_list[0] -= a_set_list[1]
@@ -41,6 +45,14 @@ def solution(a):
     # return a_set_list[0] * len(a)
     # a_set_list = list(set(a))
     return reduce(gcd, a) * len(a)
+
+def solution2(a):
+    a_set_list = sorted(list(set(a)), reverse=True)
+    while len(set(a_set_list)) != 1:
+        a_set_list[0] -= a_set_list[1]
+        a_set_list = sorted(list(set(a_set_list)), reverse=True)
+    return a_set_list[0] * len(a)
+
 
 
 
@@ -50,7 +62,9 @@ def solution(a):
 # print(solution([1, 21, 55]))
 arr_list = [randint(50, 50000)*2 for x in range(40000)]
 # print(arr_list)
-print(solution(arr_list))
+# print(solution1(arr_list))
+cProfile.run('solution1(arr_list)')
+cProfile.run('solution2(arr_list)')
 
 
 # print(solution([94, 90, 96, 95, 82, 97, 85, 94, 82, 89, 94, 82, 95, 95, 98, 84, 97, 81, 98, 99, 80, 97, 82, 95, 87, 85, 84, 96, 81, 90]))
