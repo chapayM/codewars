@@ -32,6 +32,7 @@ from math import gcd
 from functools import reduce
 
 
+
 def solution(a):
     # a_set_list = sorted(list(set(a)), reverse=True)
     # while len(set(a_set_list)) != 1:
@@ -50,5 +51,7 @@ def solution(a):
 arr_list = [randint(50, 50000)*2 for x in range(40000)]
 # print(arr_list)
 print(solution(arr_list))
+
+
 # print(solution([94, 90, 96, 95, 82, 97, 85, 94, 82, 89, 94, 82, 95, 95, 98, 84, 97, 81, 98, 99, 80, 97, 82, 95, 87, 85, 84, 96, 81, 90]))
 # arr = list(map(lambda n: n*max(floor(n/2),1), [n * 2 for n in randint(50, 500, size=randrange(30000, 50000))]))
